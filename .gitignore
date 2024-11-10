@@ -1,0 +1,9 @@
+/src/vendor
+/src/node_modules
+/src/config/db.php
+.env
+.vscode
+.DS_Store
+/src/config/db.php
+/public/css/style.css
+DO_NOT_UPLOAD_HERE
