@@ -1,6 +1,7 @@
 /src/vendor
 /src/node_modules
 /src/config/db.php
+/public_html/css/style.css
 .env
 .vscode
 .DS_Store
