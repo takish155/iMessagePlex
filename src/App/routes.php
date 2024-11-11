@@ -1,15 +1,5 @@
 <?php
 
-
-// return [
-//   "/" => "controllers/home.php",
-//   "/listings" => "controllers/listings/index.php",
-//   "/listings/create" => "controllers/listings/create.php",
-//   "404" => "controllers/error/404.php"
-// ];
-
-
-
 $router->get("/", "HomeController@index");
 
 $router->get("/auth/sign-in", "AuthController@signIn", ["guest"]);
@@ -21,4 +11,6 @@ $router->delete("/auth/sign-out", "AuthController@handleSignOut", ["auth"]);
 
 $router->get("/dashboard", "UserController@index", ["auth"]);
 $router->post("/user/generate-api-key", "UserController@generateApiKey");
-$router->post("/user/message/{username}", "UserController@sendMessage");
+$router->post("/user/message/{username}", "UserController@sendMessage", ["UserValidation@sendMessage"]);
+
+$router->get("/docs", "DocController@index");

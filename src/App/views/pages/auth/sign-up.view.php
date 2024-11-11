@@ -66,6 +66,8 @@
       </form>
     </section>
   </main>
+  <?= loadPartials("footer"); ?>
+
 
 
 </body>

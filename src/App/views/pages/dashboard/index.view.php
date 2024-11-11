@@ -17,7 +17,7 @@
             "active" => "dashboard"
           ]) ?> -->
 
-    <main class="w-[95%] max-w-[1000px] mx-auto">
+    <main class="w-[95%] min-h-screen max-w-[1000px] mx-auto">
       <?= loadPartials("dashboard/hero-section", [
         "totalMessageCount" => $messageCount ?? 0,
         "totalTodayMessageCount" => $messageTodayCount ?? 0,
@@ -28,6 +28,8 @@
       ]); ?>
     </main>
   </div>
+
+  <?= loadPartials("footer"); ?>
 </body>
 
 </html>

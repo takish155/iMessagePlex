@@ -22,7 +22,7 @@ class UserController extends HomeController
       "userId" => $userId,
     ])->fetch();
 
-    $messages = $this->db->query("SELECT * FROM messages WHERE userId = :userId ORDER BY id DESC LIMIT 10", [
+    $messages = $this->db->query("SELECT * FROM messages WHERE userId = :userId ORDER BY id DESC", [
       "userId" => $userId
     ])->fetchAll();
 

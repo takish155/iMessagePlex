@@ -1,4 +1,4 @@
-<header class="w-full py-4 flex justify-around items-center">
+<header class="w-full py-4 flex justify-around items-center top-0 sticky z-50 bg-base-200">
   <div class="flex items-center gap-4">
     <a href="/">
       <h1 class="text-2xl max-sm:text-lg font-bold">iMessagePlex</h1>

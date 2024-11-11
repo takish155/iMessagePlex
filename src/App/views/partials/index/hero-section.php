@@ -1,4 +1,4 @@
-<section class="mt-[5rem] w-[95%] mx-auto">
+<section class="mt-[20vh] mb-[12rem] w-[95%] mx-auto" id="features">
   <h2 class="text-center text-5xl max-lg:text-4xl max-sm:text-3xl mb-6">
     Get your <span class="text-primary font-bold">message form</span>
     up without <br class="max-sm:hidden" />needing a <span class="text-red-500 stroke-inherit font-bold">server</span>!

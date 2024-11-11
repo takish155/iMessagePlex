@@ -1,27 +1,14 @@
 <section class="mb-10">
-  <h2 class="text-xl font-semibold mb-4">Recent Messages</h2>
-  <table class="table">
-    <thead>
-      <tr>
-        <th></th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Message</th>
-      </tr>
-    </thead>
-    <tbody>
-      <?php
-      $index = 1;
-      foreach ($messages as $message):  ?>
-        <tr>
-          <th><?= $index ?></th>
-          <td><?= $message->name ?></td>
-          <td><?= $message->email ?></td>
-          <td><?= $message->message ?></td>
-        </tr>
-      <?php
-        $index++;
-      endforeach ?>
-    </tbody>
-  </table>
+  <h2 class="text-xl font-semibold mb-4">Your Messages</h2>
+
+  <?php
+  foreach ($messages as $message):  ?>
+    <div class="chat chat-start mb-4">
+      <div class="chat-header">
+        <?= $message->name ?> (<?= $message->email ?>)
+      </div>
+      <div class="chat-bubble"><?= $message->message  ?></div>
+    </div>
+  <?php
+  endforeach ?>
 </section>
