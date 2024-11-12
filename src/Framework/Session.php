@@ -93,7 +93,7 @@ class Session
       "email" => $email,
     ]);
 
-    redirect("/");
+    redirect("/dashboard");
     return;
   }
 

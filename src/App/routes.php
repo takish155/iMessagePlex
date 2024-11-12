@@ -13,4 +13,6 @@ $router->get("/dashboard", "UserController@index", ["auth"]);
 $router->post("/user/generate-api-key", "UserController@generateApiKey");
 $router->post("/user/message/{username}", "UserController@sendMessage", ["UserValidation@sendMessage"]);
 
+$router->delete("/user/message/{id}", "UserController@deleteMessage", ["auth", "UserValidation@deleteMessage"]);
+
 $router->get("/docs", "DocController@index");

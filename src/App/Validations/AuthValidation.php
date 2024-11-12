@@ -11,7 +11,7 @@ class AuthValidation
    *
    * @return void
    */
-  public function signIn()
+  public function signIn($params = [])
   {
     $username = htmlspecialchars($_POST["username"]);
     $password = htmlspecialchars($_POST["password"]);
@@ -40,7 +40,7 @@ class AuthValidation
    *
    * @return void
    */
-  public function signUp()
+  public function signUp($params = [])
   {
     $username = htmlspecialchars($_POST["username"] ?? "");
     $email = htmlspecialchars($_POST["email"] ?? "");

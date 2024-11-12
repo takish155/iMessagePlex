@@ -2,14 +2,21 @@
 
 namespace App\Validations;
 
+use App\Controllers\HomeController;
+use Framework\Session;
 use Framework\Validation;
 
-class UserValidation
+class UserValidation extends HomeController
 {
+  function __construct()
+  {
+    parent::__construct();
+  }
+
   /**
    * Handles message validation
    */
-  public function sendMessage()
+  public function sendMessage($params = [])
   {
     $jsonBody = file_get_contents('php://input');
     $data = json_decode($jsonBody, true);
@@ -43,6 +50,26 @@ class UserValidation
         "errors" => $errors
       ], 400);
       exit;
+    }
+  }
+
+  public function deleteMessage($params = [])
+  {
+
+
+    $user = $this->db->query("SELECT * FROM messages WHERE id = :id", [
+      "id" => $params["id"]
+    ])->fetch();
+
+    if (!$user) {
+      Session::setFlashMessage("error_message", "Message doesn't exist. Probably it got removed?");
+      return redirect("/dashboard");
+    }
+
+
+    if ($user->userId !== Session::get("user")["id"]) {
+      Session::setFlashMessage("error_message", "You don't own this message!");
+      return redirect("/dashboard");
     }
   }
 };

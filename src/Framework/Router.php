@@ -148,7 +148,7 @@ class Router
                 $validationInstance = new $validation[0];
 
                 $method = $validation[1];
-                $validationInstance->$method();
+                $validationInstance->$method($params);
               }
             }
           }

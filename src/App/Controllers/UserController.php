@@ -99,4 +99,15 @@ class UserController extends HomeController
     ], 200);
     exit;
   }
+
+  public function deleteMessage($params)
+  {
+    $this->db->query("DELETE FROM messages WHERE id = :id", [
+      "id" => $params["id"]
+    ])->fetch();
+
+    Session::setFlashMessage("success_message", "Successfully deleted the message.");
+
+    return redirect("/dashboard");
+  }
 }
