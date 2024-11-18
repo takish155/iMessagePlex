@@ -6,13 +6,18 @@ use Framework\Session;
 
 class UserController extends HomeController
 {
-  function __construct()
+  private $t;
+
+  function __construct($locale)
   {
-    parent::__construct();
+    parent::__construct($locale);
+
+    $this->t = $this->translation->loadMessage("dashboard-page");
   }
 
   public function index()
   {
+
     $userId = Session::get("user")["id"];
     $messageCount = $this->db->query("SELECT COUNT(*) AS total_count FROM messages WHERE userId = :userId", [
       "userId" => $userId,
@@ -26,21 +31,22 @@ class UserController extends HomeController
       "userId" => $userId
     ])->fetchAll();
 
-
-
-
     loadView(
       "pages/dashboard/index",
       [
         "messageCount" => $messageCount->total_count,
         "messageTodayCount" => $messageTodayCount->message_count,
-        "messages" => $messages
+        "messages" => $messages,
+        "t" => $this->t["view"],
+        "locale" => $this->locale
       ]
     );
   }
 
   public function generateApiKey()
   {
+    $t = $this->t["server"];
+
     $randomBytes = random_bytes(32);
     $apiKey = bin2hex($randomBytes);
     $userId = Session::get("user")["id"];
@@ -52,14 +58,18 @@ class UserController extends HomeController
       "apiKey" => $hashedApiKey
     ]);
 
-    Session::setFlashMessage("success_message", "Successfully generated API key of '$apiKey'.");
 
-    redirect("/dashboard");
+
+    Session::setFlashMessage("success_message", $t["generatedApiKey"] . $apiKey);
+
+    redirect("/$this->locale/dashboard");
     exit;
   }
 
   public function sendMessage($params)
   {
+    $t = $this->t["server"];
+
     $username = htmlspecialchars($params["username"] ?? "");
     $jsonBody = file_get_contents('php://input');
     $data = json_decode($jsonBody, true);
@@ -75,14 +85,14 @@ class UserController extends HomeController
 
     if (!$user) {
       sendJsonResponse([
-        "message" => "User not found!",
-      ], 404);
+        "message" => $t["invalidCredentials"],
+      ], 400);
       exit;
     }
 
     if (!password_verify($apiKey, $user->apiKey)) {
       sendJsonResponse([
-        "message" => "Invalid credentials!",
+        "message" => $t["invalidCredentials"],
       ], 400);
       exit;
     }
@@ -95,19 +105,21 @@ class UserController extends HomeController
     ]);
 
     sendJsonResponse([
-      "message" => "Successfully sent message!",
+      "message" => $t["successfullySentMessage"],
     ], 200);
     exit;
   }
 
   public function deleteMessage($params)
   {
+    $t = $this->t["server"];
+
     $this->db->query("DELETE FROM messages WHERE id = :id", [
       "id" => $params["id"]
     ])->fetch();
 
-    Session::setFlashMessage("success_message", "Successfully deleted the message.");
+    Session::setFlashMessage("success_message", $t["successfullyDeletedMessage"]);
 
-    return redirect("/dashboard");
+    return redirect("/$this->locale/dashboard");
   }
 }

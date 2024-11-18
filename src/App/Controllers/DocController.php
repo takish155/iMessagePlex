@@ -3,10 +3,18 @@
 namespace App\Controllers;
 
 
-class DocController
+class DocController extends HomeController
 {
-  public static function index()
+  function __construct($locale)
   {
-    loadView("pages/docs/index");
+    parent::__construct($locale);
+  }
+
+  public function index()
+  {
+    loadView("pages/docs/index", [
+      "t" => $this->translation->loadMessage("doc-page")["docs"],
+      "locale" => $this->locale
+    ]);
   }
 }

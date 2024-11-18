@@ -2,15 +2,20 @@
 
 namespace App\Validations;
 
-use App\Controllers\HomeController;
+use Framework\Database;
 use Framework\Session;
 use Framework\Validation;
 
-class UserValidation extends HomeController
+class UserValidation extends LocaleValidation
 {
-  function __construct()
+  private $db;
+
+  function __construct($locale)
   {
-    parent::__construct();
+    $config = require basePath("config/db.php");
+    $this->db = new Database($config);
+
+    parent::__construct($locale);
   }
 
   /**

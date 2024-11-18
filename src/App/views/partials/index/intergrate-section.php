@@ -44,7 +44,7 @@ form.addEventListener("submit", async (event) => {
 
 
 <section class="w-[95%] mx-auto mb-[10rem]">
-  <h2 class="text-4xl font-bold text-center mb-8">Intergration in action</h2>
+  <h2 class="text-4xl font-bold text-center mb-8"><?= $t ?></h2>
   <div class="mockup-code w-[95%] max-w-[1100px] mx-auto mb-4">
     <pre>
       <code class="language-html">

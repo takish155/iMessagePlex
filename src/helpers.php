@@ -1,5 +1,7 @@
 <?php
 
+use App\Controllers\LocaleController;
+
 /**
  * Get the base path 
  * 
@@ -135,3 +137,36 @@ function sendJsonResponse($data, $statusCode = 200)
   // Finally, output the JSON-encoded data
   echo json_encode($data);
 }
+
+
+
+
+/**
+ * Get the users current locale
+ */
+function getLocale()
+{
+
+  $url = $_SERVER['REQUEST_URI']; // Get the current URL path
+  if (preg_match('/^\/ja/', $url)) {
+    return "ja";
+  }
+  return "en"; // Default locale
+}
+
+
+
+/**
+ * Get message
+ *
+ * @param string $pageName
+ * @return void
+ */
+function getMessage($pageName)
+{
+  $locale = getLocale();
+
+  $translation = new LocaleController($locale);
+
+  return $translation->loadMessage($pageName);
+};

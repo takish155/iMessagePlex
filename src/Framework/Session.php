@@ -83,17 +83,19 @@ class Session
    * @param string $userId
    * @param string $username
    * @param string $email
+   * @param string $locale
    * @return void
    */
-  public static function authenticate($userId, $username, $email)
+  public static function authenticate($userId, $username, $email, $locale)
   {
     Session::set("user", [
       "id" => $userId,
       "username" => $username,
       "email" => $email,
+      "locale" => $locale,
     ]);
 
-    redirect("/dashboard");
+    redirect("/$locale/dashboard");
     return;
   }
 

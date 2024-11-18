@@ -4,8 +4,13 @@ namespace App\Validations;
 
 use Framework\Validation;
 
-class AuthValidation
+class AuthValidation extends LocaleValidation
 {
+  function __construct($locale)
+  {
+    parent::__construct($locale);
+  }
+
   /**
    * Handles validation for sign in
    *
@@ -16,14 +21,17 @@ class AuthValidation
     $username = htmlspecialchars($_POST["username"]);
     $password = htmlspecialchars($_POST["password"]);
 
+    $translation = $this->translation->loadMessage("sign-in-page");
+    $t = $translation["server"];
+
     $errors = [];
 
     if (!Validation::string($username, 3, 30)) {
-      $errors[] = ["username" => "Username must be around 3-30 characters"];
+      $errors[] = ["username" => $t["usernameError"]];
     }
 
     if (!Validation::string($password, 6, 100)) {
-      $errors[] = ["password" => "Password must be around 6-100 characters"];
+      $errors[] = ["password" => $t["passwordError"]];
     }
 
     if (!empty($errors)) {
@@ -31,6 +39,8 @@ class AuthValidation
         "errors" => $errors,
         "username" => $username,
         "password" => $password,
+        "t" => $translation["view"],
+        "locale" => $this->locale,
       ]);
     };
   }
@@ -47,24 +57,27 @@ class AuthValidation
     $password = htmlspecialchars($_POST["password"] ?? "");
     $confirmPassword = htmlspecialchars($_POST["confirm-password"] ?? "");
 
+    $translation = $this->translation->loadMessage("sign-up-page");
+    $t = $translation["server"];
+
     $errors = [];
 
     if (!Validation::string($username, 3, 30)) {
-      $errors[] = ["username" => "Username must be around 3-30 characters"];
+      $errors[] = ["username" => $t["usernameError"]];
     }
 
     if (!Validation::email($email) || !Validation::string($email, 5, 100)) {
-      $errors[] = ["email" => "Must be a valid email or be around 5-100 characters"];
+      $errors[] = ["email" => $t["emailError"]];
     }
 
     if (!Validation::string($password, 6, 100)) {
-      $errors[] = ["password" => "Password must be around 6-100 characters"];
+      $errors[] = ["password" => $t["passwordError"]];
     }
 
     if (!Validation::match($password, $confirmPassword)) {
-      $errors[] = ["confirmPassword" => "Password doesn't match!"];
+      $errors[] = ["confirmPassword" => $t["confirmPasswordError"]];
     }
-
+    // TODO: Load views translation of sign up page
     if (!empty($errors)) {
       loadView("pages/auth/sign-up", [
         "errors" => $errors,
@@ -72,6 +85,8 @@ class AuthValidation
         "email" => $email,
         "password" => $password,
         "confirmPassword" => $confirmPassword,
+        "t" => $translation["view"],
+        "locale" => $this->locale,
       ]);
 
       exit;

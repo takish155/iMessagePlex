@@ -21,10 +21,14 @@
       <?= loadPartials("dashboard/hero-section", [
         "totalMessageCount" => $messageCount ?? 0,
         "totalTodayMessageCount" => $messageTodayCount ?? 0,
+        "locale" => $locale,
+        "t" => $t,
       ]); ?>
 
       <?= loadPartials("dashboard/message-table", [
-        "messages" => $messages ?? []
+        "messages" => $messages ?? [],
+        "t" => $t,
+        "locale" => $locale,
       ]); ?>
     </main>
   </div>

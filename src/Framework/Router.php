@@ -110,6 +110,7 @@ class Router
 
       $match = true;
 
+
       if (count($uriSegment) === count($routeSegments) && strtoupper($route['method'] === $requestMethod)) {
         $params = [];
         $match = true;
@@ -128,6 +129,13 @@ class Router
           }
         }
 
+        $locale = $params["locale"];
+
+        if ($locale !== "en" && $locale !== "ja") {
+          $url = $_SERVER["REQUEST_URI"];
+          return redirect("/en$url");
+        }
+
         if ($match) {
           $middleware = $route["middleware"];
 
@@ -136,7 +144,7 @@ class Router
               $middleware[0] === "guest" ||
               $middleware[0] === "auth"
             ) {
-              (new Authorize())->handle($middleware[0]);
+              (new Authorize($locale))->handle($middleware[0]);
               array_shift($middleware);
             }
 
@@ -145,7 +153,7 @@ class Router
                 $validation = "App\\Validations\\" . $middlewares;
                 $validation = explode("@", $validation);
 
-                $validationInstance = new $validation[0];
+                $validationInstance = new $validation[0]($locale);
 
                 $method = $validation[1];
                 $validationInstance->$method($params);
@@ -159,24 +167,11 @@ class Router
           $controllerMethod = $route["controllerMethod"];
 
           // Init the controller and call method
-          $controllerInstance = new $controller();
+          $controllerInstance = new $controller($locale);
           $controllerInstance->$controllerMethod($params);
           return;
         };
       }
-
-
-
-      // if ($route["uri"] === $uri && $route["method"] === $method) {
-      //   // Extract controller and controller method
-      //   $controller = "App\\Controllers\\" . $route["controller"];
-      //   $controllerMethod = $route["controllerMethod"];
-
-      //   // Init the controller and call method
-      //   $controllerInstance = new $controller();
-      //   $controllerInstance->$controllerMethod();
-      //   return;
-      // }
     }
 
     ErrorController::notFound("Page not found, try checking your URL");

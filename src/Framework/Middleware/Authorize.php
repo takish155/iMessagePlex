@@ -6,6 +6,13 @@ use Framework\Session;
 
 class Authorize
 {
+  private $locale;
+
+  public function __construct($locale)
+  {
+    $this->locale = $locale;
+  }
+
   /**
    * Check if user is authenticated
    * 
@@ -25,11 +32,13 @@ class Authorize
    */
   public function handle($role)
   {
+    $locale = $this->locale;
+
     if ($role === "guest" && $this->isAuthenticated()) {
-      return redirect("/dashboard");
+      return redirect("/$locale/dashboard");
     }
     if ($role === "auth" && !$this->isAuthenticated()) {
-      return redirect("/auth/sign-in");
+      return redirect("/$locale/auth/sign-in");
     }
   }
 }
