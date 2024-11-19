@@ -1,6 +1,8 @@
 <?php
 
 return [
+  "description" => "Easily set up your message form without the hassle of managing a server. Fast, secure, and ready to use!",
+  "tags" => "form handler, serverless forms, free API, iMessagePlex, form submission, message forms, no server needed",
   "heroSection" => [
     "heroSectionTitle" => ' Get your <span class="text-primary font-bold">message form</span>
       up without <br class="max-sm:hidden" />needing a <span class="text-red-500 stroke-inherit font-bold">server</span>!',
@@ -17,5 +19,5 @@ return [
     "feature3Title" => "Quick and Easy Setup",
     "feature3Description" => "Get up and running in under 20 minutes! With intuitive instructions and a streamlined setup process, adding a contact form to your site has never been simpler.",
   ],
-  "intergration" => "Intergration in action"
+  "intergration" => "Intergration in action",
 ];

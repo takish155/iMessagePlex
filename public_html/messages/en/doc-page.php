@@ -3,6 +3,8 @@ $locale = getLocale();
 
 return [
   "docs" => [
+    "title" => "Documentation",
+    "description" => "Official iMessagePlex documentation: A complete resource for learning, integrating, and managing serverless forms and free API services with ease.",
     "gettingStartedTitle" => "Getting Started",
     "gettingStartedDescription" => "Welcome to the iMessagePlex documentation! Follow these steps to set up and manage your contact form.",
     "setupFormTitle" => "Set Up a Form",

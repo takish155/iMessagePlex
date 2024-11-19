@@ -4,6 +4,8 @@ $locale = getLocale();
 
 return [
   "docs" => [
+    "title" => "ドキュメント",
+    "description" => "iMessagePlex公式ドキュメント：サーバーレスフォームと無料APIサービスを簡単に学び、統合し、管理するための完全なリソースです",
     "gettingStartedTitle" => "はじめに",
     "gettingStartedDescription" => "iMessagePlexのドキュメントへようこそ！以下の手順に従って、コンタクトフォームをセットアップおよび管理してください。",
     "setupFormTitle" => "フォームをセットアップする",

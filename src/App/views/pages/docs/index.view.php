@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="<?= $locale ?>">
 
-<?= loadPartials("html-head", ["title" => "Docs - iMessagePlex"]) ?>
+<?= loadPartials("html-head", [
+  "title" => $t['title'] . " - iMessagePlex",
+  "description" => $t["description"]
+]) ?>
 
 <body data-theme="night">
   <!-- Header -->

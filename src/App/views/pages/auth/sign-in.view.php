@@ -2,7 +2,8 @@
 <html lang="en">
 
 <?= loadPartials("html-head", [
-  "title" => "Sign-In - iMessagePlex",
+  "title" => $t['title'] . " - iMessagePlex",
+  "description" => $t["metaDescription"]
 ]) ?>
 
 <body>

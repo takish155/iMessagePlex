@@ -2,7 +2,7 @@
 <html lang="en">
 
 <?= loadPartials("html-head", [
-  "title" => "Dashboard - iMessagePlex",
+  "title" => $t["title"] . " - iMessagePlex",
 ]) ?>
 
 <body>

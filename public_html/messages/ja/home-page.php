@@ -1,6 +1,8 @@
 <?php
 
 return [
+  "description" => "サーバー管理の手間なく、簡単にメッセージフォームをセットアップ。高速で安全、すぐに使い始められます！",
+  "tags" => "フォームハンドラー, サーバーレスフォーム, 無料API, iMessagePlex, フォーム送信, メッセージフォーム, サーバー不要",
   "heroSection" => [
     "heroSectionTitle" => 'サーバーがなくても <span class="text-primary font-bold">メッセージフォーム</span> をすぐに立ち上げよう! <br class="max-sm:hidden" />',
     "heroSectionDescription" => "無料のAPIが好きなので、ポートフォリオサイト用にフォームメッセージを処理するこのウェブサイトを作成しました。",

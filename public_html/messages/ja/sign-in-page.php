@@ -2,6 +2,7 @@
 
 return [
   "view" => [
+    "metaDescription" => "iMessagePlexアカウントにサインインして、サーバーレスフォームを管理し、パーソナライズされたダッシュボードにアクセスしましょう。",
     "title" => "サインイン",
     "description" => "アカウントにサインインしましょう！",
     "username" => "ユーザー名",

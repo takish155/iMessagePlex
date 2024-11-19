@@ -2,6 +2,7 @@
 
 return [
   "view" => [
+    "metaDescription" => "Sign in to your iMessagePlex account to manage serverless forms and access your personalized dashboard.",
     "title" => "Sign in",
     "description" => "Sign in to your account!",
     "username" => "Username",

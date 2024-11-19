@@ -1,7 +1,8 @@
 <?php
 return [
   "view" => [
-    "totalMessages" => "メッセージ総数",
+    "title" => "ダッシュボード",
+    "totalMessages" => "メッセージ数",
     "apiKey" => "APIキー",
     "apiKeyDescription" => "忘れた場合、または持っていない場合は、新しいものを生成して必ず覚えておいてください。",
     "generate" => "生成",

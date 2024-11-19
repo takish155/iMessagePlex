@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+$locale = getLocale();
+?>
+
 <?= loadPartials("html-head", [
-  "title" => "Sign-Up - iMessagePlex",
+  "title" => $t['title'] . " - iMessagePlex",
+  "description" => $t["metaDescription"]
 ]) ?>
 
 <body>
@@ -60,8 +65,8 @@
         <div class="divider text-xs">
           OR
         </div>
-        <a href="/auth/sign-in">
-          <button type="button" class="btn btn-sm btn-outline w-full mx-auto"><?= $t["title"] ?></button>
+        <a href="/<?= $locale ?>/auth/sign-in">
+          <button type="button" class="btn btn-sm btn-outline w-full mx-auto"><?= $t["haveAnAccount"] ?></button>
         </a>
       </form>
     </section>

@@ -1,5 +1,5 @@
 <section class="mb-10">
-  <h2 class="text-xl font-semibold mb-4">Your Messages</h2>
+  <h2 class="text-xl font-semibold mb-4"><?= $t["yourMessages"] ?></h2>
 
   <?php
   foreach ($messages as $message):  ?>

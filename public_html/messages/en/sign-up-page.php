@@ -3,6 +3,7 @@
 
 return [
   "view" => [
+    "metaDescription" => "Create your iMessagePlex account and start managing serverless forms effortlessly with our free API and user-friendly dashboard.",
     "title" => "Sign up",
     "description" => "Create your account in iMessagePlex!",
     "username" => "Username",

@@ -5,5 +5,5 @@ return [
   "documentation" => "ドキュメント",
   "dashboard" => "ダッシュボード",
   "signOut" => "サインアウト",
-  "signIn" => "会員登録"
+  "signIn" => "サインイン"
 ];

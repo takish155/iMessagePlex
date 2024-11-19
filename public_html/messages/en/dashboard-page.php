@@ -1,6 +1,7 @@
 <?php
 return [
   "view" => [
+    "title" => "Dashboard",
     "totalMessages" => "Total Messages",
     "apiKey" => "API Key",
     "apiKeyDescription" => "If you have forgotten or have none, generate one and make sure to remember it.",

@@ -2,6 +2,7 @@
 
 return [
   "view" => [
+    "metaDescription" => "iMessagePlexアカウントを作成して、無料のAPIと使いやすいダッシュボードでサーバーレスフォームを簡単に管理しましょう。",
     "title" => "新規登録",
     "description" => "iMessagePlexでアカウントを作成しましょう！",
     "username" => "ユーザー名",
